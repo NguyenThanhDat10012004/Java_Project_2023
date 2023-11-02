@@ -72,8 +72,6 @@ public class ControllerSearch extends ControllerMain implements Initializable {
         }
         return true;
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PaneSearch.setOnKeyPressed(new EventHandler<KeyEvent>() {

@@ -21,8 +21,8 @@ public class DictionaryManagement extends ControllerMain{
     private final File Favor;
 
     public DictionaryManagement() throws IOException {
-        this.word = new File("C:/Users/Admin/IdeaProjects/project_main/src/main/resources/View/eng_vie.txt");
-        this.Favor = new File("C:/Users/Admin/IdeaProjects/project_main/src/main/resources/View/Favor.txt");
+        this.word = new File("C:/Users/X1 gen 9/Downloads/Java_Project_2023/src/main/resources/View/eng_vie.txt");
+        this.Favor = new File("C:/Users/X1 gen 9/Downloads/Java_Project_2023/src/main/resources/View/Favor.txt");
         this.dc = new Dictionary();
     }
 

@@ -3,28 +3,18 @@
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="629.0" prefWidth="773.0" stylesheets="@TranslateCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_main.ControllerTranslate">
+<AnchorPane prefHeight="629.0" prefWidth="773.0" stylesheets="@TranslateCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_main.ControllerTranslate">
    <children>
       <Label layoutX="17.0" layoutY="25.0" prefHeight="39.0" prefWidth="272.0" text=" Ngôn ngữ có thể phát hiện">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <ChoiceBox fx:id="ngonngu" layoutX="466.0" layoutY="57.0" prefHeight="31.0" prefWidth="148.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Vietnamese" />
-               <String fx:value="Japanese" />
-               <String fx:value="English" />
-            </FXCollections>
-         </items>
-      </ChoiceBox>
       <TextArea fx:id="word" layoutX="17.0" layoutY="155.0" onMouseClicked="#ClickWord" prefHeight="363.0" prefWidth="272.0">
          <font>
             <Font size="19.0" />
@@ -34,20 +24,28 @@
             <Font size="19.0" />
          </font></TextArea>
       <Button fx:id="translatebutton" layoutX="348.0" layoutY="288.0" mnemonicParsing="false" onAction="#translateAPI" prefHeight="53.0" prefWidth="65.0" />
-      <ListView layoutX="17.0" layoutY="57.0" mouseTransparent="true" prefHeight="95.0" prefWidth="272.0">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Vietnamese" />
-               <String fx:value="Japanese" />
-               <String fx:value="English" />
-               <!-- Thêm các giá trị khác nếu cần -->
-            </FXCollections>
-         </items>
-      </ListView>
       <Label layoutX="466.0" layoutY="31.0" prefHeight="21.0" prefWidth="189.0" text="Ngôn ngữ dịch ">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
+      <ComboBox fx:id="select1" layoutX="17.0" layoutY="75.0" prefHeight="25.0" prefWidth="265.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Vietnamese" />
+               <String fx:value="Japanese" />
+               <String fx:value="English" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="select2" layoutX="466.0" layoutY="75.0" prefHeight="25.0" prefWidth="293.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Vietnamese" />
+               <String fx:value="Japanese" />
+               <String fx:value="English" />
+            </FXCollections>
+         </items>
+      </ComboBox>
    </children>
 </AnchorPane>

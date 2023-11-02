@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 
@@ -30,9 +31,12 @@ public class ControllerTranslate implements Initializable {
     @FXML
     private TextArea maining;
     @FXML
-    private ChoiceBox ngonngu;
+    private ComboBox select1;
+    @FXML
+    private ComboBox select2;
 
     String change_to = "";
+    String change_from = "";
     private static String translate(String langFrom, String langTo, String text) throws IOException, UnsupportedEncodingException {
         // INSERT YOU URL HERE
         String urlStr = "https://script.google.com/macros/s/AKfycbzIOeAutlWtcZEUQBVRCoeasN-aoZ-eLgHyGK72ekZPoTni9nKpS2aaZcCRC4h8OHRi/exec" +
@@ -61,43 +65,37 @@ public class ControllerTranslate implements Initializable {
             alert.showAndWait();
         }
         else {
-            String select = "";
+            String select_to = "", select_from = "";
             if(change_to.equals("Vietnamese")) {
-                select = "vi";
+                select_to = "vi";
             } else if (change_to.equals("Japanese")) {
-                select = "ja";
+                select_to = "ja";
             } else {
-                select = "en";
+                select_to = "en";
+            }
+
+            if(change_from.equals("Vietnamese")) {
+                select_from = "vi";
+            } else if (change_from.equals("Japanese")) {
+                select_from = "ja";
+            } else {
+                select_from = "en";
             }
             String word_target = word.getText();
-            if(!translate("ja", select, word_target).contains("<!DOCTYPE")) {
-                maining.setText(translate("ja", select, word_target));
-                System.out.println("ja" + " " + select);
-            }
-            else if(!translate("vi", select, word_target).contains("<!DOCTYPE")) {
-                maining.setText(translate("vi", select, word_target));
-                System.out.println("vi" + " " + select);
-            }
-            else if(!translate("en", select, word_target).contains("<!DOCTYPE")){
-                maining.setText(translate("en", select, word_target));
-                System.out.println("en" + " " + select);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Thông báo");
-                alert.setHeaderText(null);
-                alert.setContentText("Từ của bạn không đúng ngôn ngữ trên");
-                alert.showAndWait();
-                word.setText("");
-                maining.setText("");
-            }
+            maining.setText(translate(select_from, select_to, word_target));
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ngonngu.getSelectionModel().selectedItemProperty().addListener((ChangeListener<String>) (observable, oldValue, newValue) -> {
+        select2.getSelectionModel().selectedItemProperty().addListener((ChangeListener<String>) (observable, oldValue, newValue) -> {
             if (newValue != null) {
                 change_to = newValue;
+            }
+        });
+        select1.getSelectionModel().selectedItemProperty().addListener((ChangeListener<String>) (observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                change_from = newValue;
             }
         });
     }
