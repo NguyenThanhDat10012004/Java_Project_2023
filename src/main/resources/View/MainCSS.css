@@ -1,0 +1,72 @@
+
+.button {
+    -fx-background-color: none;
+    -fx-text-fill: rgba(0, 0, 0, 0.63);
+    -fx-font-size: 11;
+}
+
+.button:hover {
+    -fx-background-color: aqua;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+
+.button.active {
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+
+.Home {
+    -fx-graphic: url('../Image/HomeMain.png');
+}
+
+.Home:hover {
+    -fx-background-color: none;
+    -fx-text-fill: Black;
+    -fx-font-size: 11;
+    -fx-cursor: default;
+}
+.search_button {
+    -fx-graphic: url('../Image/search.png');
+
+}
+
+.search_button:hover {
+    -fx-graphic: url('../Image/search.png');
+}
+.favor_button {
+    -fx-graphic: url('../Image/favourite.png');
+}
+
+.favor_button:hover {
+    -fx-graphic: url('../Image/favourite.png');
+
+}
+.History_button {
+    -fx-graphic: url('../Image/insert1.png');
+}
+
+.History_button:hover {
+    -fx-graphic: url('../Image/insert1.png');
+}
+.translate_button {
+    -fx-graphic: url('../Image/google.png');
+}
+
+.translate_button:hover {
+    -fx-graphic: url('../Image/google.png');
+}
+.game_button {
+    -fx-graphic: url('../Image/game1.png');
+
+}
+.game_button:hover {
+    -fx-graphic: url('../Image/game1.png');
+}
+#PaneLeft {
+    -fx-background-color: rgba(128, 128, 128, 0.21);
+}
+#vBoxMain{
+    -fx-background-color: rgba(128, 128, 128, 0.52);
+}

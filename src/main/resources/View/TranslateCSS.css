@@ -1,0 +1,23 @@
+.button {
+    -fx-graphic: url('../Image/translation.png');
+}
+
+.button:hover {
+    -fx-graphic: url('../Image/translation.png');
+}
+.button {
+    -fx-background-color: rgba(128, 128, 128, 0.52);
+    -fx-text-fill: rgba(0, 0, 0, 0.63);
+    -fx-font-size: 11;
+}
+
+.button:hover {
+    -fx-background-color: aqua;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+.button.active {
+    -fx-background-color: aqua;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}

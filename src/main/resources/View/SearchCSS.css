@@ -1,0 +1,63 @@
+.search:hover {
+    -fx-graphic: url('../Image/search.png');
+    -fx-background-color: none;
+}
+.search {
+    -fx-graphic: url('../Image/search.png');
+}
+#searchedword {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+#PaneSearch {
+    -fx-background-color: rgba(128, 128, 128, 0);
+}
+#PaneRightSearch{
+    -fx-background-color: white;
+}
+.luu{
+    -fx-graphic: url('../Image/favor1.png');
+}
+
+.luu:hover {
+    -fx-graphic: url('../Image/favor1.png');
+    -fx-background-color: none;
+}
+.luu.change-image{
+    -fx-background-color: yellow;
+}
+.thaydoi {
+    -fx-graphic: url('../Image/edit.png');
+}
+
+.thaydoi:hover {
+    -fx-graphic: url('../Image/edit.png');
+    -fx-background-color: none;
+}
+.xoa {
+    -fx-graphic: url('../Image/remove.png');
+}
+
+.xoa:hover {
+    -fx-graphic: url('../Image/remove.png');
+    -fx-background-color: none;
+}
+.noi {
+    -fx-graphic: url('../Image/speak.png');
+}
+
+.noi:hover {
+    -fx-graphic: url('../Image/speak.png');
+    -fx-background-color: none;
+}
+.save {
+    -fx-graphic: url('../Image/Save.png');
+
+
+}
+
+.save:hover {
+    -fx-graphic: url('../Image/Save.png');
+    -fx-background-color: none;
+}

@@ -1,0 +1,29 @@
+.text-label {
+    -fx-text-fill: #060607;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+.button-arrow {
+    -fx-background-image: url('../Image/arrow.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 15;
+    -fx-background-color: #5865F2;
+    -fx-background-radius: 0 3 3 0;
+    -fx-pref-width: 34;
+    -fx-pref-height: 34;
+}
+.button-save {
+    -fx-graphic: url('../Image/Save.png');
+}
+
+.button-save:hover {
+    -fx-graphic: url('../Image/Save.png');
+}
+.button-reset {
+    -fx-graphic: url('../Image/reset.png');
+}
+
+.button-reset:hover {
+    -fx-graphic: url('../Image/reset.png');
+}
