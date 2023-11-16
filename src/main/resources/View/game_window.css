@@ -1,0 +1,19 @@
+.button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.8) , 0,0,0,0 );
+}
+.button:hover {
+    -fx-background-color: none;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+.button-styled:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}

@@ -5,8 +5,12 @@ package com.example.project_main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 
 
@@ -19,6 +23,7 @@ public class ControllerMain {
     private AnchorPane Favor;
     private AnchorPane Insert;
     private AnchorPane Translate;
+    private AnchorPane Game;
 
 
     private DictionaryManagement md;
@@ -84,5 +89,26 @@ public class ControllerMain {
         reset();
         translate.getStyleClass().add("active");
         MainPane.getChildren().setAll(Translate);
+    }
+
+    public void putGame(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/game_window.fxml"));
+        Game = loader.load();
+        reset();
+        gamebutton.getStyleClass().add("active");
+        MainPane.getChildren().setAll(Game);
+//        Stage memoryGameStage = new Stage();
+//        MemoryGameController memoryGameController = new MemoryGameController(memoryGameStage);
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/memory_game.fxml"));
+//        loader.setController(memoryGameController);
+//        try {
+//            Parent root = null;
+//            root = loader.load();
+//            Scene scene = new Scene(root);
+//            memoryGameStage.setScene(scene);
+//            memoryGameStage.showAndWait();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }

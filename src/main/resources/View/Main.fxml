@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="PaneLeft" prefHeight="529.0" prefWidth="660.0" stylesheets="@MainCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_main.ControllerMain">
+<AnchorPane fx:id="PaneLeft" prefHeight="529.0" prefWidth="660.0" stylesheets="@MainCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_main.ControllerMain">
    <children>
       <VBox fx:id="home" prefHeight="70.0" prefWidth="64.0">
          <children>
@@ -32,12 +32,12 @@
                   <String fx:value="History_button" />
                </styleClass>
             </Button>
-            <Button fx:id="gamebutton" contentDisplay="top" mnemonicParsing="false" prefHeight="70.0" prefWidth="64.0" text="Game">
+            <Button fx:id="gamebutton" contentDisplay="top" mnemonicParsing="false" onAction="#putGame" prefHeight="70.0" prefWidth="64.0" text="Game">
                <styleClass>
                   <String fx:value="game_button" />
                </styleClass>
             </Button>
-            <Button fx:id="translate" contentDisplay="top" mnemonicParsing="false" onAction="#translatebutton" prefHeight="70.0" prefWidth="64.0" text="Translate" >
+            <Button fx:id="translate" contentDisplay="top" mnemonicParsing="false" onAction="#translatebutton" prefHeight="70.0" prefWidth="64.0" text="Translate">
                <styleClass>
                   <String fx:value="translate_button" />
                </styleClass>

@@ -1,0 +1,7 @@
+.label {
+    -fx-border-color: white; /* Màu viền trắng */
+    -fx-border-width: 2px; /* Độ dày viền */
+    -fx-padding: 5px; /* Khoảng cách giữa nội dung và viền */
+    -fx-background-color: #283593; /* Đặt màu nền theo mã màu hoặc tên màu */
+    -fx-text-fill: white; /* Đặt màu chữ là trắng */
+}
