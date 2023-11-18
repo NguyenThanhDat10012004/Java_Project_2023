@@ -1,4 +1,4 @@
-package com.example.project_main;
+package com.example.project_main.MemoryGame;
 
 public class Card {
     private String wordCard;

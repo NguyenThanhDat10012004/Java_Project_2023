@@ -1,5 +1,6 @@
 package com.example.project_main;
 
+import com.example.project_main.cmd.Word;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

@@ -1,4 +1,6 @@
-package com.example.project_main;
+package com.example.project_main.cmd;
+
+import com.example.project_main.ControllerMain;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Admin
  */
-public class DictionaryManagement extends ControllerMain{
+public class DictionaryManagement extends ControllerMain {
 
     private Dictionary dc;
     private final File word;

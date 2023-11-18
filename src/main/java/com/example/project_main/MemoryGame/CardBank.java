@@ -1,6 +1,5 @@
-package com.example.project_main;
+package com.example.project_main.MemoryGame;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

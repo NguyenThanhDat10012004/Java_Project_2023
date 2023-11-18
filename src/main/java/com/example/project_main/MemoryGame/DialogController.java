@@ -1,13 +1,10 @@
-package com.example.project_main;
+package com.example.project_main.MemoryGame;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class DialogController {
     @FXML
@@ -22,10 +19,13 @@ public class DialogController {
     @FXML
     private Label scoreLabel;
 
+    private Stage mainStage;
+
     @FXML
     void endGame(ActionEvent event) {
         dialogStage.close();
         memoryGameStage.close();
+        mainStage.show();
     }
 
     @FXML
@@ -41,21 +41,13 @@ public class DialogController {
 
     private Stage memoryGameStage;
 
-    public DialogController(int score, Stage dialogStage) {
-        this.score = score;
-        this.dialogStage = dialogStage;
-        if (score > bestScore) {
-            bestScore = score;
-        }
-    }
 
-    public DialogController(int score, Stage dialogStage, Stage memoryGameStage) {
+    public DialogController(int score, int bestScore, Stage dialogStage, Stage memoryGameStage, Stage mainStage) {
         this.score = score;
         this.dialogStage = dialogStage;
+        this.mainStage = mainStage;
         this.memoryGameStage = memoryGameStage;
-        if (score > bestScore) {
-            bestScore = score;
-        }
+        this.bestScore = bestScore;
     }
     public void initialize() {
         scoreLabel.setText(Integer.toString(score));

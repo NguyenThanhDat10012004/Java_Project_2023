@@ -1,11 +1,11 @@
-package com.example.project_main;
+package com.example.project_main.cmd;
 
 public class Word implements Comparable<Word> {
 
     private final String word_target;
     private final String word_explain;
 
-    Word(String word_target, String word_explain) {
+    public Word(String word_target, String word_explain) {
         this.word_explain = word_explain;
         this.word_target = word_target;
     }

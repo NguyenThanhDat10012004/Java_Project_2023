@@ -2,11 +2,10 @@ package com.example.project_main;
 
 
 
+import com.example.project_main.cmd.DictionaryManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -25,6 +24,11 @@ public class ControllerMain {
     private AnchorPane Translate;
     private AnchorPane Game;
 
+    private Stage mainStage;
+
+    public void setMainStage(Stage mainStage) {
+        this.mainStage = mainStage;
+    }
 
     private DictionaryManagement md;
     @FXML
@@ -37,6 +41,7 @@ public class ControllerMain {
     private Button gamebutton;
     @FXML
     private Button translate;
+
     protected static ControllerMain controllersearch = new ControllerMain();
     protected static ControllerMain controllerfavor = new ControllerMain();
     protected static ControllerFavor favor = new ControllerFavor();
@@ -94,21 +99,14 @@ public class ControllerMain {
     public void putGame(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/game_window.fxml"));
         Game = loader.load();
+
+        ControllerGame controllerGame = loader.getController();
+        controllerGame.setMainStage(mainStage);
+
+
         reset();
         gamebutton.getStyleClass().add("active");
         MainPane.getChildren().setAll(Game);
-//        Stage memoryGameStage = new Stage();
-//        MemoryGameController memoryGameController = new MemoryGameController(memoryGameStage);
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/memory_game.fxml"));
-//        loader.setController(memoryGameController);
-//        try {
-//            Parent root = null;
-//            root = loader.load();
-//            Scene scene = new Scene(root);
-//            memoryGameStage.setScene(scene);
-//            memoryGameStage.showAndWait();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+
     }
 }

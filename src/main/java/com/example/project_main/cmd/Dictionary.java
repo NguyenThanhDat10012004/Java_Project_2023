@@ -1,4 +1,4 @@
-package com.example.project_main;
+package com.example.project_main.cmd;
 
 import java.util.TreeSet;
 

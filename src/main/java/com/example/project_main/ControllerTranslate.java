@@ -21,9 +21,9 @@ import java.util.ResourceBundle;
 
 public class ControllerTranslate implements Initializable {
     public static void main(String[] args) throws IOException {
-        String text = "にほんご";
+        String text = "xin chào";
         //Translated text: Hallo Welt!
-        System.out.println("Translated text: " + translate("ja", "vi", text));
+        System.out.println("Translated text: " + translate("vi", "en", text));
     }
 
     @FXML
@@ -81,8 +81,18 @@ public class ControllerTranslate implements Initializable {
             } else {
                 select_from = "en";
             }
-            String word_target = word.getText();
-            maining.setText(translate(select_from, select_to, word_target));
+            if(select_from.equals(select_to)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Hãy chọn 2 ngôn ngữ khác nhau");
+                alert.showAndWait();
+            }
+            else {
+                String word_target = word.getText();
+                maining.setText(translate(select_from, select_to, word_target));
+            }
+
         }
     }
 

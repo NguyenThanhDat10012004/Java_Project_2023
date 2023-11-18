@@ -1,10 +1,8 @@
-package com.example.project_main;
+package com.example.project_main.MemoryGame;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,8 +14,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 
 import java.io.File;
@@ -32,10 +28,14 @@ public class MemoryGameController implements Initializable {
     // For example
     private Stage memoryGameStage;
 
-    public MemoryGameController(Stage memoryGameStage) {
-        this.memoryGameStage = memoryGameStage;
-    }
+    private Stage mainStage;
 
+    public MemoryGameController(Stage memoryGameStage, Stage mainStage)
+    {
+        this.memoryGameStage = memoryGameStage;
+        this.mainStage = mainStage;
+    }
+    private int maxScore = 0;
     @FXML
     private ImageView soundButton ;
     private Image firstImage = new Image(getClass().getResource("/Image/turnOn.png").toExternalForm());
@@ -207,6 +207,13 @@ public class MemoryGameController implements Initializable {
 
     }
 
+    private int blabla(int numOfGuess) {
+        if (numOfGuess == 5) {
+            return 100;
+        }
+        else return 100 - numOfGuess + 5;
+    }
+
     private void checkForMatch() {
 
         if (card1.isSameCard(card2)) {
@@ -224,7 +231,7 @@ public class MemoryGameController implements Initializable {
 
                 Stage dialogStage = new Stage();
 
-                DialogController dialogController = new DialogController(50 - numOfGuess, dialogStage, memoryGameStage);
+                DialogController dialogController = new DialogController(blabla(numOfGuess),maxScore > blabla(numOfGuess) ? maxScore : blabla(numOfGuess), dialogStage, memoryGameStage, mainStage);
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/dialog.fxml"));
 
