@@ -5,10 +5,6 @@
  */
 package project;
 
-/**
- *
- * @author Admin
- */
 public class Word implements Comparable<Word> {
 
     private final String word_target;
@@ -29,7 +25,6 @@ public class Word implements Comparable<Word> {
 
     @Override
     public int compareTo(Word other) {
-        // Compare Word objects based on their word_target property
         return this.word_target.compareTo(other.word_target);
     }
 }

@@ -10,8 +10,6 @@ import static com.example.project_main.ControllerMain.controllersearch;
 import static com.example.project_main.ControllerMain.controllerfavor;
 public class Main extends Application   {
 
-
-
     public static void main(String[] args) throws IOException {
         controllersearch.init();
         controllerfavor.initFavor();

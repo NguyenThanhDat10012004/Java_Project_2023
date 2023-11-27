@@ -22,32 +22,39 @@ import java.util.Scanner;
  */
 public class DictionaryManagement {
 
-    private Dictionary dc;
+    // private Dictionary dc;
     private final File word;
+    private Trie trie = new Trie();
 
     public DictionaryManagement() throws IOException {
-        this.word = new File("C:/Users/Admin/Documents/NetBeansProjects/JavaApplication1/src/project/ntd_dictionaries.txt");\
-        Trie trie = new Trie();
-        // this.dc = new Dictionary();
+        this.word = new File("D:\\Code\\Java_Pro\\forOasis5\\solution3\\ex1\\src\\ntd_dictionaries.txt");
+        if (!word.exists()) {
+            System.out.println("no file");
+        }
+        
     }
 
-    public void insertFromCommandline() {
-        Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine());
+    public void insertFromCommandline(Scanner tmp_sc) {
+        tmp_sc.nextInt();
+        int n = Integer.parseInt(tmp_sc.nextLine());
         while (n > 0) {
+            tmp_sc.nextLine();
             System.out.print("Nhap tu tieng anh: ");
-            String word_target = sc.nextLine();
+            String word_target = tmp_sc.nextLine();
             System.out.print("Nhap giai thich: ");
-            String word_explain = sc.nextLine();
-            Word s = new Word(word_target, word_explain);
-            dc.words.add(s);
+            String word_explain = tmp_sc.nextLine();
+            
+            trie.insert(word_target, word_explain);
             n--;
         }
+
     }
 
     public void insertFromFile() throws FileNotFoundException {
 
-        try (Scanner myReader = new Scanner(word)) {
+        try {
+            Scanner myReader = new Scanner(word);
+
             while (myReader.hasNextLine()) {
                 String[] data = myReader.nextLine().split(" ");
                 String word_target = data[0];
@@ -57,94 +64,80 @@ public class DictionaryManagement {
                     for (int i = 1; i < data.length; i++) {
                         word_explain = word_explain + data[i] + " ";
                     }
-                    Word s = new Word(word_target, word_explain);
-                    dc.words.add(s);
+                    trie.insert(word_target, word_explain);
                 }
-
             }
+        } catch (Exception e) {
+            System.out.println("error insertFile");
         }
     }
 
-    public void dictionaryLookup() {
+    public void dictionaryLookup(Scanner tmp_sc) {
         System.out.print("Nhap tu can tra: ");
-        Scanner sc = new Scanner(System.in);
-        String word_target = sc.nextLine();
-        int check = 0;
-        for (Word i : dc.getWords()) {
-            if (i.getWord_target().equals(word_target)) {
-                String word_explain = i.getWord_explain();
-                System.out.println("Nghia cua tu la: " + word_explain);
-                check = 1;
-                break;
-            }
-        }
-        if (check == 0) {
-            System.out.println("Tu nhap khong hop le ");
-        }
+        tmp_sc.nextLine();
+        String word_target = tmp_sc.nextLine();
+        System.out.println(trie.getWordMeaning(word_target));
+
     }
 
-    public void dictionaryUpdate() {
+    public void dictionaryUpdate(Scanner tmp_sc) {
         System.out.print("Nhap tu can sua: ");
-        Scanner sc = new Scanner(System.in);
-        String word_target = sc.nextLine();
-        for (Word i : dc.getWords()) {
-            if (i.getWord_target().equals(word_target)) {
-                System.out.print("Nghia cua tu la: ");
-                String word_explain = sc.nextLine();
-                dc.words.remove(i);
-                Word s = new Word(word_target, word_explain);
-                dc.words.add(s);
-                break;
-            }
+        tmp_sc.nextLine();
+        String word_target = tmp_sc.nextLine();
+        System.out.print("Nhap y nghia: ");
+
+        if (trie.search(word_target)) {
+            String word_explain = tmp_sc.nextLine();
+            trie.setWordMeaning(word_target, word_explain);
         }
+
     }
 
-    public void dictionaryInsert() {
-        Scanner sc = new Scanner(System.in);
+    public void dictionaryInsert(Scanner tmp_sc) {
+        tmp_sc.nextLine();
         System.out.print("Nhap tu tieng anh: ");
-        String word_target = sc.nextLine();
+        String word_target = tmp_sc.nextLine();
         System.out.print("Nhap giai thich: ");
-        String word_explain = sc.nextLine();
+        String word_explain = tmp_sc.nextLine();
         Word s = new Word(word_target, word_explain);
-        dc.words.add(s);
+        trie.insert(word_target, word_explain);
+
     }
 
-    public void dictionaryEraser() {
-        Scanner sc = new Scanner(System.in);
+    public void dictionaryEraser(Scanner tmp_sc) {
         System.out.print("Nhap tu tieng anh muon xoa: ");
-        String word_target = sc.nextLine();
-        int check = 0;
-        for (Word i : dc.getWords()) {
-            if (i.getWord_target().equals(word_target)) {
-                dc.words.remove(i);
-                check = 1;
-                break;
-            }
-        }
-        if (check == 0) {
-            System.out.println("khong co tu thoa man ");
-        }
+        tmp_sc.nextLine();
+        String word_target = tmp_sc.nextLine();
+        trie.deleteWord(word_target);
+
     }
 
     public void dictionaryExportToFile() throws IOException {
         FileWriter writer = new FileWriter(word);
-        for (Word i : dc.getWords()) {
+        List<Word> words = trie.startWith_WM("");
+        for (Word i : words) {
             String s = i.getWord_target() + " " + i.getWord_explain();
-            writer.write(s);
-            writer.write('\n');
+            writer.write(s + "\n");
         }
         writer.close();
     }
 
-    public void game() {
+    public void game(Scanner tmp_sc) {
         List<Integer> numbers = new ArrayList<>();
+        List<Word> words = trie.startWith_WM("");
+
+        if (words.size() < 5) {
+            System.out.println("There is not enough Words in library!");
+            return;
+        }
+
         Random generator = new Random();
         int value = generator.nextInt(4);
-        for (int i = 0; i < dc.getWords().size(); i++) {
+        for (int i = 0; i < words.size(); i++) {
             numbers.add(i);
         }
         List<Word> list = new ArrayList<>();
-        for(Word i: dc.getWords()) {
+        for (Word i : words) {
             list.add(i);
         }
         Collections.shuffle(numbers);
@@ -160,37 +153,36 @@ public class DictionaryManagement {
         value_C = list.get(x.get(2)).getWord_explain();
         key_D = list.get(x.get(3)).getWord_target();
         value_D = list.get(x.get(3)).getWord_explain();
-        
+
         key_main = list.get(x.get(value)).getWord_target();
         value_main = list.get(x.get(value)).getWord_explain();
-        
-        System.out.println("[" + key_main + "]" + " is maining: ");
+
+        System.out.println("[" + key_main + "]" + " is meaning: ");
         System.out.println("[A]  " + value_A);
         System.out.println("[B]  " + value_B);
         System.out.println("[C]  " + value_C);
         System.out.println("[D]  " + value_D);
         System.out.print("Your choice [A/B/C/D]: ");
-        Scanner sc= new Scanner(System.in);
-        String check  = sc.nextLine();
-        if(check.equals("A") && value_A.equals(value_main)) {
+
+        // Consume the newline character left in the buffer
+        tmp_sc.nextLine();
+
+        String check = tmp_sc.nextLine();
+
+        if (check.equals("A") && value_A.equals(value_main)) {
             System.out.println("Congratulate you are Correct!");
-        } 
-        else if(check.equals("B") && value_B.equals(value_main)) {
+        } else if (check.equals("B") && value_B.equals(value_main)) {
             System.out.println("Congratulate you are Correct!");
-        }
-        else if(check.equals("C") && value_C.equals(value_main)) {
+        } else if (check.equals("C") && value_C.equals(value_main)) {
             System.out.println("Congratulate you are Correct!");
-        }
-        else if(check.equals("D") && value_D.equals(value_main)) {
+        } else if (check.equals("D") && value_D.equals(value_main)) {
             System.out.println("Congratulate you are Correct!");
-        }
-        else {
+        } else {
             System.out.println("you are Wrong!");
         }
-        
     }
 
-    public Dictionary getDc() {
-        return dc;
+    public Trie getTrie() {
+        return trie;
     }
 }

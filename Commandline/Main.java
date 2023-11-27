@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package project;
+
 import java.io.IOException;
 
 /**
@@ -13,7 +14,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         DictionaryManagement md = new DictionaryManagement();
-        DictionaryCommandline dc = new DictionaryCommandline(md.getDc());
+        DictionaryCommandline dc = new DictionaryCommandline(md.getTrie());
         dc.DictionaryCommandLine(md);
     }
 }
