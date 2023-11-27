@@ -9,6 +9,7 @@ import javafx.scene.text.TextAlignment;
 public class Player extends Entities {
     private int point = 0;
     private int pos;
+    private int hp = 3;
     private final String image = getClass().getResource("/Image/image.png").toString();
     private Text text;
 
@@ -86,5 +87,15 @@ public class Player extends Entities {
 
     public void setText(String newText) {
         text.setText(newText);
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        if (hp >= 0) {
+            this.hp = hp;
+        }
     }
 }

@@ -1,9 +1,11 @@
 .search:hover {
     -fx-graphic: url('../Image/search.png');
     -fx-background-color: none;
+    -fx-opacity: 1;
 }
 .search {
     -fx-graphic: url('../Image/search.png');
+    -fx-opacity:0.8;
 }
 #searchedword {
     -fx-font-size: 20;
@@ -18,35 +20,42 @@
 }
 .thaydoi {
     -fx-graphic: url('../Image/edit.png');
+    -fx-opacity:0.8;
 }
 
 .thaydoi:hover {
     -fx-graphic: url('../Image/edit.png');
     -fx-background-color: none;
+    -fx-opacity: 1;
 }
 .xoa {
     -fx-graphic: url('../Image/remove.png');
+    -fx-opacity:0.8;
 }
 
 .xoa:hover {
     -fx-graphic: url('../Image/remove.png');
     -fx-background-color: none;
+    -fx-opacity: 1;
 }
 .noi {
     -fx-graphic: url('../Image/speak.png');
+    -fx-opacity:0.8;
 }
 
 .noi:hover {
     -fx-graphic: url('../Image/speak.png');
     -fx-background-color: none;
+    -fx-opacity: 1;
 }
 .save {
     -fx-graphic: url('../Image/Save.png');
-
+    -fx-opacity:0.8;
 
 }
 
 .save:hover {
     -fx-graphic: url('../Image/Save.png');
     -fx-background-color: none;
+    -fx-opacity: 1;
 }

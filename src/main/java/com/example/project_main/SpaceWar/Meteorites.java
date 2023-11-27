@@ -10,7 +10,7 @@ import javafx.scene.text.TextAlignment;
 public class Meteorites extends Entities {
     private final String image = getClass().getResource("/Image/meteorite.png").toString();
     private Text text;
-    private static final double fallspeed = 2;
+    private static final double fallspeed = 4;
 
     public Meteorites(double cornerX, double cornerY, double lengthX, double lengthY, String word) {
         super(cornerX, cornerY, lengthX, lengthY);

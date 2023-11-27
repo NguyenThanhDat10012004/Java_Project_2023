@@ -5,10 +5,6 @@ module com.example.project_main {
     requires javafx.media;
     requires freetts;
 
-
-
-
-
     opens com.example.project_main to javafx.fxml;
     exports com.example.project_main;
     exports com.example.project_main.MemoryGame;

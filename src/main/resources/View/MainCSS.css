@@ -1,19 +1,17 @@
-
 .button {
     -fx-background-color: none;
-    -fx-text-fill: rgba(0, 0, 0, 0.63);
+    -fx-text-fill: rgba(0, 0, 0, 1);
     -fx-font-size: 11;
+    -fx-background-radius: 100;
 }
 
 .button:hover {
-    -fx-background-color: aqua;
     -fx-text-fill: black;
     -fx-cursor: hand;
 }
 
 .button.active {
-    -fx-background-color: yellow;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-cursor: hand;
 }
 
@@ -21,12 +19,7 @@
     -fx-graphic: url('../Image/HomeMain.png');
 }
 
-.Home:hover {
-    -fx-background-color: none;
-    -fx-text-fill: Black;
-    -fx-font-size: 11;
-    -fx-cursor: default;
-}
+
 .search_button {
     -fx-graphic: url('../Image/search.png');
 
@@ -34,39 +27,92 @@
 
 .search_button:hover {
     -fx-graphic: url('../Image/search.png');
+    -fx-background-color: #2962ff;
 }
+
+.search_button.active {
+    -fx-background-color: #5A6EF5 !important; 
+    -fx-cursor: hand;
+    -fx-border-color: blue;
+    -fx-border-radius: 100;
+    -fx-border-width:1;
+}
+
+
 .favor_button {
     -fx-graphic: url('../Image/favourite.png');
 }
 
 .favor_button:hover {
     -fx-graphic: url('../Image/favourite.png');
-
+    -fx-background-color: #2962ff;
 }
+
+.favor_button.active {
+    -fx-background-color: #5A6EF5 !important; 
+    -fx-border-color: blue;
+    -fx-border-radius: 100;
+    -fx-border-width:1;
+    -fx-cursor: hand;
+}
+
+
 .History_button {
     -fx-graphic: url('../Image/insert1.png');
 }
 
 .History_button:hover {
     -fx-graphic: url('../Image/insert1.png');
+    -fx-background-color: #2962ff;
 }
+.History_button.active {
+    -fx-background-color: #5A6EF5 !important; 
+    -fx-border-color: blue;
+    -fx-border-radius: 100;
+    -fx-border-width:1;
+    -fx-cursor: hand;
+}
+
+
 .translate_button {
     -fx-graphic: url('../Image/google.png');
 }
 
 .translate_button:hover {
     -fx-graphic: url('../Image/google.png');
+    -fx-background-color: #2962ff;
 }
+
+.translate_button.active {
+    -fx-background-color: #5A6EF5 !important; 
+    -fx-border-color: blue;
+    -fx-border-radius: 100;
+    -fx-border-width:1;
+    -fx-cursor: hand;
+}
+
+
 .game_button {
     -fx-graphic: url('../Image/game1.png');
 
 }
 .game_button:hover {
     -fx-graphic: url('../Image/game1.png');
+    -fx-background-color: #2962ff;
 }
+
+.game_button.active {
+    -fx-background-color: #5A6EF5 !important; 
+    -fx-border-color: blue;
+    -fx-border-radius: 100;
+    -fx-border-width:1;
+    -fx-cursor: hand;
+}
+
 #PaneLeft {
-    -fx-background-color: rgba(128, 128, 128, 0.21);
+    -fx-background-color: #C4BEF5;
 }
 #vBoxMain{
-    -fx-background-color: rgba(128, 128, 128, 0.52);
+    -fx-background-color: rgba(128, 128, 128, 0);
 }
+

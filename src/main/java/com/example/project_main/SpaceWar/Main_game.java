@@ -11,9 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -33,6 +36,9 @@ public class Main_game extends Application {
     public static final double HEIGHT = 720;
     public static final double WIDTH = 480;
 
+    //javaFx sounds
+    private AudioClip laserSound;
+
     // javafx attributes
     private Stage mainStage;
     private AnimationTimer game;
@@ -40,6 +46,7 @@ public class Main_game extends Application {
     private VBox rootBox = new VBox();
     private Scene scene;
     private Scene gameOverScene;
+    private List<ImageView> images = new ArrayList<ImageView>();
 
     // game state boolean
     boolean isHumanCollisionMeteors = false;
@@ -61,6 +68,9 @@ public class Main_game extends Application {
 
         if (isGameOver) {
             mainStage.setScene(gameOverScene);
+            images.clear();
+            bullets.clear();
+            Asteroids.clear();
             if (gameOverScene == null) {
                 gameOverScene = new Scene(VboxDef(), WIDTH, HEIGHT);
             }
@@ -69,6 +79,10 @@ public class Main_game extends Application {
         if (isHumanCollisionMeteors) {
             isHumanCollisionMeteors = false;
             // System.out.println("isHumanCollisionMeteors");
+            isGameOver = true;
+        }
+
+        if (player.getHp() == 0) {
             isGameOver = true;
         }
 
@@ -122,7 +136,9 @@ public class Main_game extends Application {
                             player.setPoint(player.getPoint() + 1);
                             isEngtoViet = false;
                         } else {
-                            isGameOver = true;
+                            root.getChildren().removeAll(images.get(player.getHp() - 1));
+                            images.remove(player.getHp() - 1);
+                            player.setHp(player.getHp() - 1);
                         }
                     } else {
                         if (wordList.isRightWord(player.getContent().getText(), meteor.getContent().getText())) {
@@ -131,7 +147,9 @@ public class Main_game extends Application {
                             isEngtoViet = true;
                             player.setPoint(player.getPoint() + 1);
                         } else {
-                            isGameOver = true;
+                            root.getChildren().removeAll(images.get(player.getHp() - 1));
+                            images.remove(player.getHp() - 1);
+                            player.setHp(player.getHp() - 1);
                         }
                     }
 
@@ -176,6 +194,21 @@ public class Main_game extends Application {
 
         player.resetPos(WIDTH);
         player.setPoint(0);
+
+        laserSound = new AudioClip(getClass().getResource("/laserShot.wav").toString());
+
+        for (int i = 0; i < 3; i++) {
+            ImageView imageView = new ImageView(new Image(getClass().getResource("/Image/heart.png").toString()));
+            imageView.setFitWidth(20);
+            imageView.setFitHeight(20);
+
+            // Set translations
+            imageView.setTranslateX(20 + i * 30);
+            imageView.setTranslateY(20);
+
+            images.add(imageView);
+            rootB.getChildren().add(imageView);
+        }
 
         if (isEngtoViet) {
             words = wordList.randomWords();
@@ -251,6 +284,7 @@ public class Main_game extends Application {
             isGameOver = false;
             isBulletCollisionMeteor = false;
             isEngtoViet = true;
+            player.setHp(3);
 
             // restart method
             root.getChildren().clear();
@@ -297,6 +331,7 @@ public class Main_game extends Application {
                     root.getChildren().add(bullet.getRect());
                     bullets.add(bullet);
                     bullet = null;
+                    laserSound.play();
                     break;
             }
         });

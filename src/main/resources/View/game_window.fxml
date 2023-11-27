@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@game_window.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_main.ControllerGame">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="600.0" fitWidth="900.0" layoutY="-17.0" pickOnBounds="true">
          <image>
             <Image url="@../Image/game_window.jpg" />
          </image>
@@ -17,7 +17,7 @@
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
-      <Button fx:id="PlayGame2" layoutX="66.0" layoutY="346.0" mnemonicParsing="false" onAction="#PlayGame2" text="Another Game" textAlignment="CENTER">
+      <Button fx:id="PlayGame2" layoutX="64.0" layoutY="346.0" mnemonicParsing="false" onAction="#PlayGame2" prefHeight="68.0" prefWidth="259.0" text="Space Words" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>

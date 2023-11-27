@@ -26,8 +26,9 @@ public class DictionaryManagement {
     private final File word;
 
     public DictionaryManagement() throws IOException {
-        this.word = new File("C:/Users/Admin/Documents/NetBeansProjects/JavaApplication1/src/project/ntd_dictionaries.txt");
-        this.dc = new Dictionary();
+        this.word = new File("C:/Users/Admin/Documents/NetBeansProjects/JavaApplication1/src/project/ntd_dictionaries.txt");\
+        Trie trie = new Trie();
+        // this.dc = new Dictionary();
     }
 
     public void insertFromCommandline() {
