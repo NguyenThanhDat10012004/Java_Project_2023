@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="629.0" prefWidth="773.0" stylesheets="@TranslateCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_main.ControllerTranslate">
    <children>
-      <Label layoutX="17.0" layoutY="25.0" prefHeight="39.0" prefWidth="272.0" text=" Ngôn ngữ có thể phát hiện">
+      <Label alignment="CENTER" layoutX="17.0" layoutY="25.0" prefHeight="39.0" prefWidth="272.0" text=" Ngôn ngữ có thể phát hiện" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
@@ -24,12 +24,12 @@
             <Font size="19.0" />
          </font></TextArea>
       <Button fx:id="translatebutton" layoutX="348.0" layoutY="288.0" mnemonicParsing="false" onAction="#translateAPI" prefHeight="53.0" prefWidth="65.0" />
-      <Label layoutX="466.0" layoutY="31.0" prefHeight="21.0" prefWidth="189.0" text="Ngôn ngữ dịch ">
+      <Label alignment="CENTER" layoutX="466.0" layoutY="31.0" prefHeight="28.0" prefWidth="293.0" text="Ngôn ngữ dịch ">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <ComboBox fx:id="select1" layoutX="17.0" layoutY="75.0" prefHeight="25.0" prefWidth="265.0">
+      <ComboBox fx:id="select1" layoutX="17.0" layoutY="75.0" prefHeight="33.0" prefWidth="272.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Vietnamese" />
@@ -38,7 +38,7 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <ComboBox fx:id="select2" layoutX="466.0" layoutY="75.0" prefHeight="25.0" prefWidth="293.0">
+      <ComboBox fx:id="select2" layoutX="466.0" layoutY="75.0" prefHeight="33.0" prefWidth="293.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Vietnamese" />

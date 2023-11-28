@@ -29,8 +29,8 @@
     -fx-opacity: 1;
 }
 .luu.change-image{
-    -fx-background-color: yellow;
-    -fx-opacity:0.8;
+    -fx-background-color: yellow !important;
+    -fx-opacity: 1;
 }
 .thaydoi {
     -fx-graphic: url('../Image/edit.png');

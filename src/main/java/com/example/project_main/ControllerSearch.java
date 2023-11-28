@@ -62,16 +62,7 @@ public class ControllerSearch extends ControllerMain implements Initializable {
         mainingword.getEngine().loadContent("");
         geted = false;
     }
-
-    public boolean check(String target, String Word) {
-        if (target.length() > Word.length()) return false;
-        for (int i = 0; i < target.length(); i++) {
-            if (target.charAt(i) != Word.charAt(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
+    //check
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PaneSearch.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -117,6 +108,7 @@ public class ControllerSearch extends ControllerMain implements Initializable {
 
         searchword.textProperty().addListener(new ChangeListener<String>() {
 
+            //check
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 searchList.clear();
@@ -125,16 +117,11 @@ public class ControllerSearch extends ControllerMain implements Initializable {
                     mainingword.getEngine().loadContent("");
                     maining = "";
                 }
-                if (!searchword.getText().equals("")) {
-                    for (Word i : controllersearch.getMd().getDc().getWords()) {
-                        if (check(searchword.getText(), i.getWord_target())) {
-                            searchList.add(i.getWord_target());
-                        }
-                    }
+                if (!searchword.getText().isEmpty()) {
+                    searchList.addAll(controllersearch.getMd().getDc().startWith_W(searchword.getText()));
                     listword.setItems(searchList);
                 }
             }
-
         });
     }
 
@@ -145,7 +132,7 @@ public class ControllerSearch extends ControllerMain implements Initializable {
         searchedword.setText("");
         mainingword.getEngine().loadContent("");
         maining = "";
-        if (text != "") display();
+        if (!text.isEmpty()) display();
     }
 
     public void handlesave(ActionEvent actionEvent) throws IOException {
@@ -166,13 +153,12 @@ public class ControllerSearch extends ControllerMain implements Initializable {
     }
 
     public void handlefavor(ActionEvent actionEvent) throws IOException {
-        if(!searchword.getText().equals("") && !maining.equals("") && favor) {
+        if(!searchword.getText().isEmpty() && !maining.isEmpty() && favor) {
             save.getStyleClass().add("change-image");
             favor = false;
             String word_target = searchword.getText();
             String word_explain = maining;
-            Word s = new Word(word_target, word_explain);
-            controllerfavor.getMd().getDc().words.add(s);
+            controllerfavor.getMd().getDc().insert(word_target, word_explain);
             controllerfavor.getMd().dictionaryExportToFileFavor();
         }
         else if(!favor) {
@@ -191,7 +177,7 @@ public class ControllerSearch extends ControllerMain implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Không tồn tại từ trong từ điển hoặc bạn chưa nhập từ");
             alert.showAndWait();
-        } else if (!check && maining != "") {
+        } else if (!check && !maining.isEmpty()) {
             check = true;
             savebutton.setVisible(check);
             mainingword1.setVisible(true);
@@ -228,13 +214,13 @@ public class ControllerSearch extends ControllerMain implements Initializable {
                 break;
             }
         }
-        if (!searchword.getText().equals("") && tadashii == true && geted == true) {
+        if (!searchword.getText().isEmpty() && tadashii && geted) {
             voice.speak(searchword.getText());
         }
     }
 
     public void display() {
-        if (searchword.getText().equals("")) {
+        if (searchword.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Thông báo");
             alert.setHeaderText(null);
@@ -242,28 +228,28 @@ public class ControllerSearch extends ControllerMain implements Initializable {
             alert.showAndWait();
         } else {
             geted = true;
-            for (Word i : controllersearch.getMd().getDc().getWords()) {
-                if (i.getWord_target().equals(searchword.getText())) {
-                    maining = i.getWord_explain();
-                    mainingword.getEngine().loadContent(i.getWord_explain(), "text/html");
-                    ok = true;
-                    break;
-                }
+            //check
+            String meaning = controllersearch.getMd().getDc().getWordMeaning(searchword.getText());
+            if (!meaning.isEmpty()) {
+                mainingword.getEngine().loadContent(meaning, "text/html");
+                ok = true;
             }
-            for(Word i : controllerfavor.getMd().getDc().getWords()) {
-                if(i.getWord_target().equals(searchword.getText())) {
-                    save.getStyleClass().add("change-image");
-                }
+            //check
+            if (controllerfavor.getMd().getDc().search(searchword.getText())) {
+                save.getStyleClass().add("change-image");
             }
+            //check
             ObservableList<String> items = listword.getItems();
             boolean tadashii = false;
+            //check
             for (String i : items) {
                 if (i.equals(searchword.getText())) {
                     tadashii = true;
                     break;
                 }
             }
-            if (!searchword.getText().equals("") && ok == true && tadashii == true) {
+            //check
+            if (!searchword.getText().isEmpty() && ok && tadashii) {
                 after = searchword.getText();
                 searchedword.setText("Nghĩa của từ " + searchword.getText() + " là : ");
             }

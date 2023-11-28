@@ -51,7 +51,7 @@ public class ControllerInsert extends ControllerMain implements Initializable {
         });
     }
     public void ClickArrow() {
-        if (addText.getText().equals("")) {
+        if (addText.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Thông báo");
             alert.setHeaderText(null);
@@ -59,13 +59,8 @@ public class ControllerInsert extends ControllerMain implements Initializable {
             alert.showAndWait();
             return;
         }
-        boolean check = true;
-        for(Word i : controllersearch.getMd().getDc().getWords()) {
-            if(i.getWord_target().equals(addText.getText())) {
-                check = false;
-                break;
-            }
-        }
+        boolean check = !controllersearch.getMd().getDc().search(addText.getText());
+
         if(check) {
             addEditor.setHtmlText("<html>" + addText.getText() + " /" + addText.getText() + "/"
                     + "<ul><li><b><i> loại từ: </i></b><ul><li><font color='#cc0000'><b> Nghĩa thứ nhất: </b></font><ul></li></ul></ul></li></ul><ul><li><b><i>loại từ khác: </i></b><ul><li><font color='#cc0000'><b> Nghĩa thứ hai: </b></font></li></ul></li></ul></html>");
@@ -79,13 +74,7 @@ public class ControllerInsert extends ControllerMain implements Initializable {
             alert.showAndWait();
             if (alert.getResult() == yes) {
                 correct = false;
-                String maning = "";
-                for(Word i : controllersearch.getMd().getDc().words) {
-                    if(i.getWord_target().equals(addText.getText())) {
-                        maning = i.getWord_explain();
-                        break;
-                    }
-                }
+                String maning = controllersearch.getMd().getDc().getWordMeaning(addText.getText());
                 addEditor.setHtmlText(maning);
             }
         }
@@ -106,7 +95,7 @@ public class ControllerInsert extends ControllerMain implements Initializable {
             controllersearch.getMd().dictionaryExportToFile();
 
         }
-        else if(!explain.equals("") && !correct){
+        else if(!explain.isEmpty() && !correct){
 
             controllersearch.getMd().dictionaryUpdate(addText.getText(), explain);
             addText.setText("");

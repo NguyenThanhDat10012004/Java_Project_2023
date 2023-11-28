@@ -112,13 +112,12 @@ public class ControllerFavor extends ControllerMain implements Initializable {
 
         searchword.textProperty().addListener(new ChangeListener<String>() {
 
+            //check
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 searchList.clear();
-                if (searchword.getText().equals("")) {
-                    for (Word i : controllerfavor.getMd().getDc().getWords()) {
-                            searchList.add(i.getWord_target());
-                    }
+                if (searchword.getText().isEmpty()) {
+                    searchList.addAll(controllerfavor.getMd().getDc().startWith_W(""));
                     listwordFavor.setItems(searchList);
                 }
                 if (after.length() != searchword.getText().length()) {
@@ -126,24 +125,17 @@ public class ControllerFavor extends ControllerMain implements Initializable {
                     mainingword.getEngine().loadContent("");
                     maining = "";
                 }
-                if (!searchword.getText().equals("")) {
-                    for (Word i : controllerfavor.getMd().getDc().getWords()) {
-                        if (check(searchword.getText(), i.getWord_target())) {
-                            searchList.add(i.getWord_target());
-                        }
-                    }
+                if (!searchword.getText().isEmpty()) {
+                    searchList.addAll(controllerfavor.getMd().getDc().startWith_W(searchword.getText()));
                     listwordFavor.setItems(searchList);
                 }
             }
-
         });
     }
 
     public void getsearchword(MouseEvent mouseEvent) {
-        if(favor == false) {
-            for (Word i : controllerfavor.getMd().getDc().getWords()) {
-                    FavorList.add(i.getWord_target());
-            }
+        if(!favor) {
+            FavorList.addAll(controllerfavor.getMd().getDc().startWith_W(""));
             listwordFavor.setItems(FavorList);
             favor = true;
         }
@@ -153,7 +145,7 @@ public class ControllerFavor extends ControllerMain implements Initializable {
         searchedword.setText("");
         mainingword.getEngine().loadContent("");
         maining = "";
-        if (text != "") display();
+        if (!text.isEmpty()) display();
     }
 
     public void handlesave(ActionEvent actionEvent) throws IOException {
@@ -214,19 +206,20 @@ public class ControllerFavor extends ControllerMain implements Initializable {
     public void handlespeak(MouseEvent mouseEvent) {
         ObservableList<String> items = listwordFavor.getItems();
         boolean tadashii = false;
+        //check
         for (String i : items) {
             if (i.equals(searchword.getText())) {
                 tadashii = true;
                 break;
             }
         }
-        if (!searchword.getText().equals("") && tadashii == true && geted == true) {
+        if (!searchword.getText().isEmpty() && tadashii && geted) {
             voice.speak(searchword.getText());
         }
     }
 
     public void display() {
-        if (searchword.getText().equals("")) {
+        if (searchword.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Thông báo");
             alert.setHeaderText(null);
@@ -234,14 +227,12 @@ public class ControllerFavor extends ControllerMain implements Initializable {
             alert.showAndWait();
         } else {
             geted = true;
-            for (Word i : controllerfavor.getMd().getDc().getWords()) {
-                if (i.getWord_target().equals(searchword.getText())) {
-                    maining = i.getWord_explain();
-                    mainingword.getEngine().loadContent(i.getWord_explain(), "text/html");
-                    ok = true;
-                    break;
-                }
+            String meaning = controllerfavor.getMd().getDc().getWordMeaning(searchword.getText());
+            if (!meaning.isEmpty()) {
+                mainingword.getEngine().loadContent(meaning, "text/html");
+                ok = true;
             }
+
             ObservableList<String> items = listwordFavor.getItems();
             boolean tadashii = false;
             for (String i : items) {
@@ -250,7 +241,7 @@ public class ControllerFavor extends ControllerMain implements Initializable {
                     break;
                 }
             }
-            if (!searchword.getText().equals("") && ok == true && tadashii == true) {
+            if (!searchword.getText().isEmpty() && ok && tadashii) {
                 after = searchword.getText();
                 searchedword.setText("Nghĩa của từ " + searchword.getText() + " là : ");
             }
