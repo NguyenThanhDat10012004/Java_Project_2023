@@ -112,13 +112,13 @@ public class ControllerSearch extends ControllerMain implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 searchList.clear();
-                if (after.length() != searchword.getText().length()) {
+                if (after.length() != searchword.getText().trim().length()) {
                     searchedword.setText("");
                     mainingword.getEngine().loadContent("");
                     maining = "";
                 }
                 if (!searchword.getText().isEmpty()) {
-                    searchList.addAll(controllersearch.getMd().getDc().startWith_W(searchword.getText()));
+                    searchList.addAll(controllersearch.getMd().getDc().startWith_W(searchword.getText().trim()));
                     listword.setItems(searchList);
                 }
             }
@@ -142,7 +142,7 @@ public class ControllerSearch extends ControllerMain implements Initializable {
             mainingword1.setVisible(false);
             mainingword.getEngine().loadContent(mainingword1.getHtmlText());
             String newMeaning = mainingword1.getHtmlText().replace(" dir=\"ltr\"", "");
-            controllersearch.getMd().dictionaryUpdate(searchword.getText(), newMeaning);
+            controllersearch.getMd().dictionaryUpdate(searchword.getText().trim(), newMeaning);
             controllersearch.getMd().dictionaryExportToFile();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Thông báo");
@@ -156,7 +156,7 @@ public class ControllerSearch extends ControllerMain implements Initializable {
         if(!searchword.getText().isEmpty() && !maining.isEmpty() && favor) {
             save.getStyleClass().add("change-image");
             favor = false;
-            String word_target = searchword.getText();
+            String word_target = searchword.getText().trim();
             String word_explain = maining;
             controllerfavor.getMd().getDc().insert(word_target, word_explain);
             controllerfavor.getMd().dictionaryExportToFileFavor();
@@ -252,8 +252,8 @@ public class ControllerSearch extends ControllerMain implements Initializable {
             }
             //check
             if (!searchword.getText().isEmpty() && ok && tadashii) {
-                after = searchword.getText();
-                searchedword.setText("Nghĩa của từ " + searchword.getText() + " là : ");
+                after = searchword.getText().trim();
+                searchedword.setText("Nghĩa của từ " + searchword.getText().trim() + " là : ");
             }
             if (!ok || !tadashii) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

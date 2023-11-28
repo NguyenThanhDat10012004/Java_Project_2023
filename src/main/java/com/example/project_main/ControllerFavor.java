@@ -116,7 +116,7 @@ public class ControllerFavor extends ControllerMain implements Initializable {
                     maining = "";
                 }
                 if (!searchword.getText().isEmpty()) {
-                    searchList.addAll(controllerfavor.getMd().getDc().startWith_W(searchword.getText()));
+                    searchList.addAll(controllerfavor.getMd().getDc().startWith_W(searchword.getText().trim()));
                     listwordFavor.setItems(searchList);
                 }
             }
@@ -145,9 +145,9 @@ public class ControllerFavor extends ControllerMain implements Initializable {
             mainingword1.setVisible(false);
             mainingword.getEngine().loadContent(mainingword1.getHtmlText());
             String newMeaning = mainingword1.getHtmlText().replace(" dir=\"ltr\"", "");
-            controllersearch.getMd().dictionaryUpdate(searchword.getText(), newMeaning);
+            controllersearch.getMd().dictionaryUpdate(searchword.getText().trim(), newMeaning);
             controllersearch.getMd().dictionaryExportToFile();
-            controllerfavor.getMd().dictionaryUpdate(searchword.getText(), newMeaning);
+            controllerfavor.getMd().dictionaryUpdate(searchword.getText().trim(), newMeaning);
             controllerfavor.getMd().dictionaryExportToFileFavor();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Thông báo");
@@ -235,7 +235,7 @@ public class ControllerFavor extends ControllerMain implements Initializable {
             }
             if (!searchword.getText().isEmpty() && ok && tadashii) {
                 after = searchword.getText();
-                searchedword.setText("Nghĩa của từ " + searchword.getText() + " là : ");
+                searchedword.setText("Nghĩa của từ " + searchword.getText().trim() + " là : ");
             }
             if (!ok || !tadashii) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
