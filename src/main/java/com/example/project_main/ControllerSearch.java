@@ -231,8 +231,10 @@ public class ControllerSearch extends ControllerMain implements Initializable {
             //check
             String meaning = controllersearch.getMd().getDc().getWordMeaning(searchword.getText());
             if (!meaning.isEmpty()) {
+                maining = meaning;
                 mainingword.getEngine().loadContent(meaning, "text/html");
                 ok = true;
+
             }
             //check
             if (controllerfavor.getMd().getDc().search(searchword.getText())) {

@@ -42,14 +42,12 @@ public class DictionaryManagement extends ControllerMain {
     }
 
     public void insertFromFile() throws FileNotFoundException {
-
         try (Scanner myReader = new Scanner(word)) {
             while (myReader.hasNextLine()) {
                 String[] data = myReader.nextLine().split("<html>");
                 String word_target = data[0];
                 String word_explain = "<html>" + data[1];
                 dc.insert(word_target, word_explain);
-
             }
         }
     }

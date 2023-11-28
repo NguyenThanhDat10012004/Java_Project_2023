@@ -83,7 +83,7 @@ public class ControllerInsert extends ControllerMain implements Initializable {
 
     public void add(ActionEvent actionEvent) throws IOException {
         String explain = addEditor.getHtmlText().replace(" dir=\"ltr\"", "");
-        if(!explain.equals("") && correct) {
+        if(!explain.isEmpty() && correct) {
             controllersearch.getMd().dictionaryInsert(addText.getText(), explain);
             addText.setText("");
             addEditor.setHtmlText("");

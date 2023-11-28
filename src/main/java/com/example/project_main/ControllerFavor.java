@@ -58,16 +58,6 @@ public class ControllerFavor extends ControllerMain implements Initializable {
         geted = false;
     }
 
-    public boolean check(String target, String Word) {
-        if (target.length() > Word.length()) return false;
-        for (int i = 0; i < target.length(); i++) {
-            if (target.charAt(i) != Word.charAt(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PaneFavor.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -168,19 +158,20 @@ public class ControllerFavor extends ControllerMain implements Initializable {
     }
 
     public void handlechange(ActionEvent actionEvent) {
-
         if (!ok) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
             alert.setContentText("Không tồn tại từ trong your favor hoặc bạn chưa nhập từ");
             alert.showAndWait();
-        } else if (!check && maining != "") {
+        } else if (!check && !maining.isEmpty()) {
             check = true;
             savebutton.setVisible(check);
+            System.out.println("set savebutton visible");
             mainingword1.setVisible(true);
             mainingword1.setHtmlText(maining);
-
+        } else {
+            System.out.println("where the handle do");
         }
     }
 
@@ -229,6 +220,7 @@ public class ControllerFavor extends ControllerMain implements Initializable {
             geted = true;
             String meaning = controllerfavor.getMd().getDc().getWordMeaning(searchword.getText());
             if (!meaning.isEmpty()) {
+                maining = meaning;
                 mainingword.getEngine().loadContent(meaning, "text/html");
                 ok = true;
             }
