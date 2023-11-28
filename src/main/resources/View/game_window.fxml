@@ -13,13 +13,13 @@
             <Image url="@../Image/game_window.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="PlayGame1" layoutX="64.0" layoutY="164.0" mnemonicParsing="false" onAction="#PlayGame1" text="Memory Game" textAlignment="CENTER">
+      <Button fx:id="PlayGame1" layoutX="64.0" layoutY="164.0" mnemonicParsing="false" onAction="#PlayGame1" text="Memory Game" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
-      <Button fx:id="PlayGame2" layoutX="64.0" layoutY="346.0" mnemonicParsing="false" onAction="#PlayGame2" prefHeight="68.0" prefWidth="259.0" text="Space Words" textAlignment="CENTER">
+      <Button fx:id="PlayGame2" layoutX="64.0" layoutY="346.0" mnemonicParsing="false" onAction="#PlayGame2" text="Space Words" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Arial Bold" size="12.0" />
+            <Font name="Arial Black" size="12.0" />
          </font>
       </Button>
    </children>
