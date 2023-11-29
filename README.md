@@ -1,11 +1,11 @@
 # Phát triển ứng dụng học tiếng Anh bằng JAVA - OOP 
 ## Contributors
-- Trương Minh Đức() - K67J - CNTT - UET 
+- Trương Minh Đức(22026525) - K67J - CNTT - UET 
 - Nguyễn Thành Đạt(22026522) - K67J - CNTT - UET
 - Trần Đình Tuấn(22026550) - K67J - CNTT - UET
 
 ## Introduction
-- Đây là bài tập lớn của môn Lập Trình Hướng Đối  (INT2204_2) cũng là dự án đầu tay của chúng mình ^^.
+- Đây là bài tập lớn của môn Lập Trình Hướng Đối Tượng (INT2204_2) cũng là dự án đầu tay của chúng mình ^^.
 
 ## Preview home page
 ![image]()
@@ -30,7 +30,7 @@
 - JAVAFX
 - Google API
 - Mô hình MVC
-- Scene 
+- Scene Builder
 - Mô hình lập trình hướng đối tượng
 - ...
 ## GUIDE
@@ -39,5 +39,4 @@
 - File -> Project Structure -> Add các đường dẫn vào SDKs, Libraries
 - Tiếp theo config VM để chạy: Modify options -> Add VM options --module-path "\path\to\javafx-sdk-21.0.1\lib"
 - --add-modules javafx.controlsjavafx.fxml.media
-- 
 
