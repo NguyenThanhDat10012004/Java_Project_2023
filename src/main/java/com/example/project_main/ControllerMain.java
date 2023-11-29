@@ -6,15 +6,17 @@ import com.example.project_main.cmd.DictionaryManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-
-public class ControllerMain {
+public class ControllerMain implements Initializable {
 
     @FXML
     protected AnchorPane MainPane;
@@ -25,6 +27,7 @@ public class ControllerMain {
     private AnchorPane Game;
 
     private Stage mainStage;
+    private int on = 1;
 
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
@@ -107,6 +110,22 @@ public class ControllerMain {
         reset();
         gamebutton.getStyleClass().add("active");
         MainPane.getChildren().setAll(Game);
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        if(on == 1 && MainPane != null && searchButton != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Search.fxml"));
+                search = loader.load();
+                searchButton.getStyleClass().add("active");
+                MainPane.getChildren().setAll(search);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 }

@@ -4,6 +4,7 @@ module com.example.project_main {
     requires javafx.web;
     requires javafx.media;
     requires freetts;
+    requires java.net.http;
 
     opens com.example.project_main to javafx.fxml;
     exports com.example.project_main;

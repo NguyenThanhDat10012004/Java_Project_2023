@@ -23,8 +23,8 @@ public class DictionaryManagement extends ControllerMain {
     private final File Favor;
 
     public DictionaryManagement() throws IOException {
-        this.word = new File("D:/Code/Java_Pro/Java_Project_2023/src/main/resources/View/eng_vie.txt");
-        this.Favor = new File("D:/Code/Java_Pro/Java_Project_2023/src/main/resources/View/Favor.txt");
+        this.word = new File("C:/Java_Project_2023/src/main/resources/View/eng_vie.txt");
+        this.Favor = new File("C:/Java_Project_2023/src/main/resources/View/Favor.txt");
         this.dc = new Trie();
     }
 

@@ -47,6 +47,7 @@ public class ControllerFavor extends ControllerMain implements Initializable {
     Boolean geted = false;
     Boolean favor = false;
     String after = "";
+    private int on = 1;
 
     public void getwordsearch(ActionEvent actionEvent) {
         display();
@@ -60,6 +61,11 @@ public class ControllerFavor extends ControllerMain implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(on == 1) {
+            searchList.addAll(controllerfavor.getMd().getDc().startWith_W(searchword.getText().trim()));
+            listwordFavor.setItems(searchList);
+            favor = true;
+        }
         PaneFavor.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {

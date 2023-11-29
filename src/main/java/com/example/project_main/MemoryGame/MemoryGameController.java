@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class MemoryGameController implements Initializable {
-    String musicFile = "D:/Code/Java_Pro/Java_Project_2023/src/main/resources/corect.mp3";
+    String musicFile = "C:/Java_Project_2023/src/main/resources/corect.mp3";
     // For example
     private Stage memoryGameStage;
 
@@ -222,8 +222,7 @@ public class MemoryGameController implements Initializable {
 
             card1.setCheck(true);
             card2.setCheck(true);
-
-            musicFile = "D:/Code/Java_Pro/Java_Project_2023/src/main/resources/corect.mp3";
+            musicFile = "C:/Java_Project_2023/src/main/resources/corect.mp3";
 
             if (isFirstImage) music();
 
@@ -250,7 +249,7 @@ public class MemoryGameController implements Initializable {
             }
         }
         else {
-            musicFile = "D:/Code/Java_Pro/Java_Project_2023/src/main/resources/false.mp3";
+            musicFile = "C:/Java_Project_2023/src/main/resources/false.mp3";
             if (isFirstImage) music();
         }
         card1 = null;
