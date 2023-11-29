@@ -7,11 +7,14 @@
 ## Introduction
 - Đây là bài tập lớn của môn Lập Trình Hướng Đối Tượng (INT2204_2) cũng là dự án đầu tay của chúng mình ^^.
 
-## Preview home page
-![image]()
+## Preview Home 
+![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/Home.png)
 
-## Preview product
-![image]()
+## Preview Translate View
+![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/translateimage.png)
+
+## Preview Game Home
+![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/GameHome.png)
 
 ## Features
 ### Ứng dựng có những tính năng chính như sau:
