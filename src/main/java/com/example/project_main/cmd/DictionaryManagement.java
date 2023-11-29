@@ -45,8 +45,8 @@ public class DictionaryManagement extends ControllerMain {
         try (Scanner myReader = new Scanner(word)) {
             while (myReader.hasNextLine()) {
                 String[] data = myReader.nextLine().split("<html>");
-                String word_target = data[0];
-                String word_explain = "<html>" + data[1];
+                String word_target = data[0].trim();
+                String word_explain = "<html>" + data[1].trim();
                 dc.insert(word_target, word_explain);
             }
         }
@@ -56,8 +56,8 @@ public class DictionaryManagement extends ControllerMain {
         try (Scanner myReader = new Scanner(Favor)) {
             while (myReader.hasNextLine()) {
                 String[] data = myReader.nextLine().split("<html>");
-                String word_target = data[0];
-                String word_explain = "<html>" + data[1];
+                String word_target = data[0].trim();
+                String word_explain = "<html>" + data[1].trim();
                 dc.insert(word_target, word_explain);
             }
         }
