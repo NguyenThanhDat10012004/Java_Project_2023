@@ -8,13 +8,13 @@
 - Đây là bài tập lớn của môn Lập Trình Hướng Đối Tượng (INT2204_2) cũng là dự án đầu tay của chúng mình ^^.
 
 ## Preview Home 
-![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/Home.png)
+![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/z4927585469654_4ca5cf808e3a29c8bbe6a1e8bf92147d.jpg)
 
 ## Preview Translate View
-![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/translateimage.png)
+![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/z4927585460379_1c7e37e8c4873d05dfdb97153be74493.jpg)
 
 ## Preview Game Home
-![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/GameHome.png)
+![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/z4927585484593_21cda9ff594f11126d9140404bb57675.jpg)
 
 ## Features
 ### Ứng dựng có những tính năng chính như sau:
