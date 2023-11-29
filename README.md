@@ -17,7 +17,7 @@
 ![image](https://github.com/NguyenThanhDat10012004/Java_Project_2023/blob/main/src/main/resources/Image/z4927585484593_21cda9ff594f11126d9140404bb57675.jpg)
 
 ## Features
-### Ứng dựng có những tính năng chính như sau:
+### Ứng dụng có những tính năng chính như sau:
 - CRUD: Thêm sửa xóa từ mới
 - Đọc được tài liệu từ file
 - Tìm kiếm, tra từ vựng
@@ -25,7 +25,7 @@
 - Tích hợp giao diện command line, giao diện đồ họa cơ bản
 - Giao diện đồ họa cơ bản, thân thiện, dễ dùng
 - Tìm kiếm từ vựng nhanh do được tối ưu hóa
-- Cơ sở dữ liệu phong phú, hơn 100 nghìn từ
+- Cơ sở dữ liệu phong phú, hơn 200 nghìn từ
 - Game học từ vựng
 ## Technologies
 ### Những công nghệ chính sử dụng trong dự án: 
