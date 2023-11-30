@@ -27,6 +27,7 @@
 - Tìm kiếm từ vựng nhanh do được tối ưu hóa
 - Cơ sở dữ liệu phong phú, hơn 200 nghìn từ
 - Game học từ vựng
+- Ngoài ra còn có thêm 1 số tính năng như : từ vựng yêu thích, phát âm tiếng việt
 ## Technologies
 ### Những công nghệ chính sử dụng trong dự án: 
 - JAVA
