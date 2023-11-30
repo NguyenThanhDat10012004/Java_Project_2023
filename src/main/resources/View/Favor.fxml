@@ -60,17 +60,26 @@
                         </Button>
                     </children>
                 </HBox>
-                <Button fx:id="speaker" layoutX="375.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#handlespeak" prefHeight="59.0" prefWidth="60.0">
-                    <styleClass>
-                        <String fx:value="noi" />
-                    </styleClass>
-                </Button>
+                <HBox layoutX="375.0" layoutY="73.0" prefHeight="120" prefWidth="120">
+                    <Button fx:id="speaker1" mnemonicParsing="false" onMouseClicked="#handlespeakvie" prefHeight="55" prefWidth="62.0" textFill="#8e9297">
+                        <styleClass>
+                            <String fx:value="noi" />
+                        </styleClass>
+                    </Button>
+                    <Button fx:id="speaker" mnemonicParsing="false" onMouseClicked="#handlespeak" prefHeight="55" prefWidth="62.0" textFill="#8e9297">
+                        <styleClass>
+                            <String fx:value="noi" />
+                        </styleClass>
+                    </Button>
+                </HBox>
                 <AnchorPane layoutY="132.0" prefHeight="439.0" prefWidth="528.0">
                     <children>
                         <WebView fx:id="mainingword" prefHeight="439.0" prefWidth="528.0" />
                         <HTMLEditor fx:id="mainingword1" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="439.0" prefWidth="528.0" visible="false" />
                     </children>
                 </AnchorPane>
+                <Label fx:id="speaker2Language" layoutX="379.0" layoutY="80.0" prefHeight="39.0" prefWidth="15.0" styleClass="text-lang-second" text="vi" />
+                <Label fx:id="speaker1Language" layoutX="435.0" layoutY="80.0" prefHeight="39.0" prefWidth="15.0" styleClass="text-lang-second" text="en" />
             </children>
         </AnchorPane>
     </children>

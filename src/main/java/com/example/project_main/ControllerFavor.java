@@ -15,13 +15,21 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class ControllerFavor extends ControllerMain implements Initializable {
 
@@ -255,5 +263,92 @@ public class ControllerFavor extends ControllerMain implements Initializable {
 
     public TextField getSearchword() {
         return searchword;
+    }
+
+    public void handlespeakvie(MouseEvent mouseEvent) {
+        ObservableList<String> items = listwordFavor.getItems();
+        boolean tadashii = false;
+        for (String i : items) {
+            if (i.equals(searchword.getText())) {
+                tadashii = true;
+                break;
+            }
+        }
+        if (!searchword.getText().isEmpty() && tadashii && geted) {
+            this.speak(searchword.getText());
+        }
+    }
+    public void speak(String text) {
+        String apiKey = "Xp4dxyfPu6Fs3qPskmORRNeuuISGTnxP";
+        String speed = "";
+        String voice = "banmai";
+        String payload = text; // Thay thế bằng nội dung bạn muốn chuyển thành giọng nói
+
+        // Create an asynchronous task to make the HTTP request
+        CompletableFuture<String> result = CompletableFuture.supplyAsync(() -> {
+            // Set the API endpoint URL
+            String endpoint = "https://api.fpt.ai/hmi/tts/v5";
+
+            // Create an HttpClient
+            HttpClient client = HttpClient.newHttpClient();
+
+            // Build the HTTP request with custom headers and payload
+            HttpRequest request = HttpRequest.newBuilder(URI.create(endpoint))
+                    .header("api-key", apiKey)
+                    .header("speed", speed)
+                    .header("voice", voice)
+                    .POST(HttpRequest.BodyPublishers.ofString(payload))
+                    .build();
+
+            try {
+                // Send the HTTP request and asynchronously receive the response
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+                // Return the response body as a string
+                return response.body();
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+                return null;
+            }
+        });
+
+        try {
+            // Get the result
+            String mp3Link = result.get();
+            StringBuilder modifiedMp3Link = new StringBuilder(mp3Link);
+
+            for (int i = 0; i < modifiedMp3Link.length(); i++) {
+                if (modifiedMp3Link.charAt(i) == ',') {
+                    modifiedMp3Link.setCharAt(i, ' ');
+                }
+            }
+
+// Now, modifiedMp3Link contains the modified string
+            String[] resultWithSpaces = modifiedMp3Link.toString().split(" ");
+            mp3Link = resultWithSpaces[0].substring(10, resultWithSpaces[0].length() - 1);
+
+            // Print
+            System.out.println(mp3Link);
+
+            Media media = new Media(mp3Link);
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+            mediaPlayer.setOnReady(() -> {
+                System.out.println("Audio is ready to play");
+                mediaPlayer.play();
+            });
+
+            mediaPlayer.setOnEndOfMedia(() -> {
+                System.out.println("Audio playback finished");
+                mediaPlayer.dispose();
+            });
+            try {
+                Thread.sleep(2000); // Chờ 10 giây (tùy chỉnh theo thời lượng audio)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
